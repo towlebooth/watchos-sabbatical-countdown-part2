@@ -8,12 +8,34 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var yearsLabel: WKInterfaceLabel!
     @IBOutlet var monthsLabel: WKInterfaceLabel!
     @IBOutlet var daysLabel: WKInterfaceLabel!
+    
+    var session : WCSession!
+    
+    override init() {
+        super.init()
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+    }
+    
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        
+        // get values from app context
+        let displayDate = (applicationContext["dateKey"] as? String)
+        
+        // save to user defaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(displayDate, forKey: "dateKey")
+    }
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -33,39 +55,42 @@ class InterfaceController: WKInterfaceController {
     }
     
     func startCountDown(timer: NSTimer) {
-    // create calendar, date and formatter variables
-    let userCalendar = NSCalendar.currentCalendar()
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.calendar = userCalendar
-    dateFormatter.dateFormat = "yyyy-MM-dd"
+        // create calendar, date and formatter variables
+        let userCalendar = NSCalendar.currentCalendar()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.calendar = userCalendar
+        dateFormatter.dateFormat = "yyyy-MM-dd"
     
-    // create variable to hold 7 years
-    let sevenYears: NSDateComponents = NSDateComponents()
-    sevenYears.setValue(7, forComponent: NSCalendarUnit.Year);
+        // create variable to hold 7 years
+        let sevenYears: NSDateComponents = NSDateComponents()
+        sevenYears.setValue(7, forComponent: NSCalendarUnit.Year);
     
-    // hard-code start date value for part one of this tutorial
-    let startDateIntertech: NSDate = dateFormatter.dateFromString("2005-06-01")!
+        // get values from user defaults (tutorial part 2)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var startDateIntertech = NSDate()
+        if let dateString = defaults.stringForKey("dateKey")
+        {
+            startDateIntertech = dateFormatter.dateFromString(dateString)!
+        }
     
-    // add 7 years to our start date to calculate the date of our sabbatical
-    var sabbaticalDate = userCalendar.dateByAddingComponents(sevenYears, toDate: startDateIntertech,
-    options: NSCalendarOptions(rawValue: 0))
+        // add 7 years to our start date to calculate the date of our sabbatical
+        var sabbaticalDate = userCalendar.dateByAddingComponents(sevenYears, toDate: startDateIntertech, options: NSCalendarOptions(rawValue: 0))
     
-    // since we get a sabbatical every 7 years, add 7 years until sabbaticalDate is in the future
-    while sabbaticalDate!.timeIntervalSinceNow.isSignMinus {
-    sabbaticalDate = userCalendar.dateByAddingComponents(sevenYears, toDate: sabbaticalDate!,
-    options: NSCalendarOptions(rawValue: 0))
-    }
+        // since we get a sabbatical every 7 years, add 7 years until sabbaticalDate is in the future
+        while sabbaticalDate!.timeIntervalSinceNow.isSignMinus {
+            sabbaticalDate = userCalendar.dateByAddingComponents(sevenYears, toDate: sabbaticalDate!, options: NSCalendarOptions(rawValue: 0))
+        }
     
-    // create year, month and day values for display
-    let flags: NSCalendarUnit = [.Year, .Month, .Day]
-    let dateComponents = userCalendar.components(flags, fromDate: NSDate(), toDate: sabbaticalDate!, options: [])
-    let year = dateComponents.year
-    let month = dateComponents.month
-    let day = dateComponents.day
+        // create year, month and day values for display
+        let flags: NSCalendarUnit = [.Year, .Month, .Day]
+        let dateComponents = userCalendar.components(flags, fromDate: NSDate(), toDate: sabbaticalDate!, options: [])
+        let year = dateComponents.year
+        let month = dateComponents.month
+        let day = dateComponents.day
     
-    // set labels on interface
-    yearsLabel.setText(String(format: "%d Years", year))
-    monthsLabel.setText(String(format: "%d Months", month))
-    daysLabel.setText(String(format: "%d Days", day))
+        // set labels on interface
+        yearsLabel.setText(String(format: "%d Years", year))
+        monthsLabel.setText(String(format: "%d Months", month))
+        daysLabel.setText(String(format: "%d Days", day))
     }
 }

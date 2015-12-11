@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97157F4F1C13A249001065ED /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97157F4E1C13A249001065ED /* EditViewController.swift */; };
 		97A7C0A41C0B5FB000E18635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7C0A31C0B5FB000E18635 /* AppDelegate.swift */; };
-		97A7C0A61C0B5FB000E18635 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7C0A51C0B5FB000E18635 /* ViewController.swift */; };
+		97A7C0A61C0B5FB000E18635 /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A7C0A51C0B5FB000E18635 /* DisplayViewController.swift */; };
 		97A7C0A91C0B5FB000E18635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7C0A71C0B5FB000E18635 /* Main.storyboard */; };
 		97A7C0AB1C0B5FB000E18635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97A7C0AA1C0B5FB000E18635 /* Assets.xcassets */; };
 		97A7C0AE1C0B5FB000E18635 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97A7C0AC1C0B5FB000E18635 /* LaunchScreen.storyboard */; };
@@ -64,9 +65,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		97157F4E1C13A249001065ED /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		97A7C0A01C0B5FB000E18635 /* SabbaticalCountdown2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SabbaticalCountdown2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97A7C0A31C0B5FB000E18635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		97A7C0A51C0B5FB000E18635 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97A7C0A51C0B5FB000E18635 /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		97A7C0A81C0B5FB000E18635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97A7C0AA1C0B5FB000E18635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97A7C0AD1C0B5FB000E18635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,11 +126,12 @@
 			isa = PBXGroup;
 			children = (
 				97A7C0A31C0B5FB000E18635 /* AppDelegate.swift */,
-				97A7C0A51C0B5FB000E18635 /* ViewController.swift */,
+				97A7C0A51C0B5FB000E18635 /* DisplayViewController.swift */,
 				97A7C0A71C0B5FB000E18635 /* Main.storyboard */,
 				97A7C0AA1C0B5FB000E18635 /* Assets.xcassets */,
 				97A7C0AC1C0B5FB000E18635 /* LaunchScreen.storyboard */,
 				97A7C0AF1C0B5FB000E18635 /* Info.plist */,
+				97157F4E1C13A249001065ED /* EditViewController.swift */,
 			);
 			path = SabbaticalCountdown2;
 			sourceTree = "<group>";
@@ -286,8 +289,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97A7C0A61C0B5FB000E18635 /* ViewController.swift in Sources */,
+				97A7C0A61C0B5FB000E18635 /* DisplayViewController.swift in Sources */,
 				97A7C0A41C0B5FB000E18635 /* AppDelegate.swift in Sources */,
+				97157F4F1C13A249001065ED /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +431,7 @@
 		97A7C0D01C0B5FB000E18635 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				INFOPLIST_FILE = "SabbaticalCountdown2 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intertech.ios.SabbaticalCountdown2.watchkitapp.watchkitextension;
@@ -441,6 +446,7 @@
 		97A7C0D11C0B5FB000E18635 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				INFOPLIST_FILE = "SabbaticalCountdown2 WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intertech.ios.SabbaticalCountdown2.watchkitapp.watchkitextension;
@@ -456,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = SabbaticalCountdown2_WatchKit_Extension;
 				INFOPLIST_FILE = "SabbaticalCountdown2 WatchKit App/Info.plist";
@@ -472,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = SabbaticalCountdown2_WatchKit_Extension;
 				INFOPLIST_FILE = "SabbaticalCountdown2 WatchKit App/Info.plist";
@@ -488,6 +496,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				INFOPLIST_FILE = SabbaticalCountdown2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intertech.ios.SabbaticalCountdown2;
@@ -499,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chad Towle (RRAX2M3J58)";
 				INFOPLIST_FILE = SabbaticalCountdown2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intertech.ios.SabbaticalCountdown2;
@@ -525,6 +536,7 @@
 				97A7C0D11C0B5FB000E18635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97A7C0D31C0B5FB000E18635 /* Build configuration list for PBXNativeTarget "SabbaticalCountdown2 WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +545,7 @@
 				97A7C0D51C0B5FB000E18635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97A7C0D71C0B5FB000E18635 /* Build configuration list for PBXNativeTarget "SabbaticalCountdown2" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +554,7 @@
 				97A7C0D91C0B5FB000E18635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
